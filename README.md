@@ -1,4 +1,4 @@
-# AI Engineer starter projects
+# Hands-on AI agents: learn AI engineering by building 13 Python projects
 
 Thirteen small, hands-on Python projects for learning to build AI agents, from a first tool-calling loop to RAG, MCP, LangGraph, Google ADK and evals. Most use realistic DevOps problems (logs, Kubernetes, cloud bills, on-call runbooks), so they suit engineers coming from backend, DevOps or cloud work.
 
@@ -44,7 +44,7 @@ Do them in order: each builds on ideas from the ones before. Projects 02 onwards
 
 ## Fork it and make it yours
 
-These projects are meant to be changed, not just read. **[Fork this repository](https://github.com/askmohanty/ai-engineer-starter-projects/fork)** to your own GitHub account and work in your fork:
+These projects are meant to be changed, not just read. **[Fork this repository](https://github.com/askmohanty/hands-on-ai-agents/fork)** to your own GitHub account and work in your fork:
 
 1. Do the **Try this** experiments in each project's README, and commit your changes as you go.
 2. Write down what you tried and what happened in the project's README. That record is what makes a portfolio, not just the code.
@@ -57,8 +57,8 @@ Requires Python 3.11 or newer.
 
 ```bash
 # after forking: replace <your-username> with your GitHub username
-git clone https://github.com/<your-username>/ai-engineer-starter-projects.git
-cd ai-engineer-starter-projects
+git clone https://github.com/<your-username>/hands-on-ai-agents.git
+cd hands-on-ai-agents
 
 python -m venv .venv
 source .venv/bin/activate          # Windows: .venv\Scripts\activate

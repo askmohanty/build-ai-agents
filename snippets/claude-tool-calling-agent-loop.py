@@ -1,6 +1,6 @@
 # The tool-calling loop every agent is built on.
 # pip install anthropic    (set ANTHROPIC_API_KEY)
-# More: https://github.com/askmohanty/ai-engineer-starter-projects
+# More: https://github.com/askmohanty/hands-on-ai-agents
 import json
 
 import anthropic

@@ -1,6 +1,6 @@
 # Reliable JSON from a model: force it to call one tool whose schema is your output format.
 # pip install anthropic    (set ANTHROPIC_API_KEY)
-# More: https://github.com/askmohanty/ai-engineer-starter-projects
+# More: https://github.com/askmohanty/hands-on-ai-agents
 import json
 
 import anthropic

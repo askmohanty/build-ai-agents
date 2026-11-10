@@ -1,7 +1,7 @@
 # Evals: grade an answer with a second model call (LLM-as-judge), with structured output.
 # Run it over a set of test questions every time you change a prompt, model or chunk size.
 # pip install anthropic    (set ANTHROPIC_API_KEY)
-# More: https://github.com/askmohanty/ai-engineer-starter-projects
+# More: https://github.com/askmohanty/hands-on-ai-agents
 import anthropic
 
 client = anthropic.Anthropic()
