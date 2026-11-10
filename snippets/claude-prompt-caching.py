@@ -1,6 +1,6 @@
 # Prompt caching: pay full price for a long, stable prefix once, then about a tenth of it on every reuse.
 # pip install anthropic    (set ANTHROPIC_API_KEY)
-# More: https://github.com/askmohanty/hands-on-ai-agents
+# More: https://github.com/askmohanty/build-ai-agents
 import anthropic
 
 client = anthropic.Anthropic()

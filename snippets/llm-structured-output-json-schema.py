@@ -1,6 +1,6 @@
 # Reliable JSON from a model: native structured output constrains the reply to your JSON schema.
 # pip install anthropic    (set ANTHROPIC_API_KEY)
-# More: https://github.com/askmohanty/hands-on-ai-agents
+# More: https://github.com/askmohanty/build-ai-agents
 import json
 
 import anthropic

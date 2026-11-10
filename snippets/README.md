@@ -22,4 +22,4 @@ All thirteen together in one Gist: https://gist.github.com/askmohanty/d1bda98dfc
 
 Set `ANTHROPIC_API_KEY` for the Claude snippets, or `GOOGLE_API_KEY` for the ADK one.
 
-**Learning?** These are the short versions. The full projects, with sample data, theory and experiments, are in this repository: **[fork it](https://github.com/askmohanty/hands-on-ai-agents/fork)** and work through them in your fork.
+**Learning?** These are the short versions. The full projects, with sample data, theory and experiments, are in this repository: **[fork it](https://github.com/askmohanty/build-ai-agents/fork)** and work through them in your fork.

@@ -1,7 +1,7 @@
 # The agent loop without writing the loop: typed Python functions become tools, the SDK runs the calls.
 # Compare with claude-tool-calling-agent-loop.py, which writes the same loop by hand.
 # pip install anthropic    (set ANTHROPIC_API_KEY)
-# More: https://github.com/askmohanty/hands-on-ai-agents
+# More: https://github.com/askmohanty/build-ai-agents
 import anthropic
 from anthropic import beta_tool
 

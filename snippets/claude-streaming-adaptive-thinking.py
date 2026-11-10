@@ -1,7 +1,7 @@
 # Streaming with adaptive thinking: show the model's reasoning summary and answer as they arrive,
 # and trade depth for cost with the effort setting.
 # pip install anthropic    (set ANTHROPIC_API_KEY)
-# More: https://github.com/askmohanty/hands-on-ai-agents
+# More: https://github.com/askmohanty/build-ai-agents
 import anthropic
 
 client = anthropic.Anthropic()

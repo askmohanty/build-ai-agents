@@ -1,6 +1,6 @@
 # Structured output with Pydantic: describe the answer as a class, get a validated object back.
 # pip install anthropic pydantic    (set ANTHROPIC_API_KEY)
-# More: https://github.com/askmohanty/hands-on-ai-agents
+# More: https://github.com/askmohanty/build-ai-agents
 from typing import Literal
 
 import anthropic

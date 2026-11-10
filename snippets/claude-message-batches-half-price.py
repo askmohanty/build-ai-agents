@@ -1,7 +1,7 @@
 # Batch API: send many independent requests at once and pay half price, for work that can wait
 # (classifying a backlog, summarising tickets, running an eval set). Most batches finish within an hour.
 # pip install anthropic    (set ANTHROPIC_API_KEY)
-# More: https://github.com/askmohanty/hands-on-ai-agents
+# More: https://github.com/askmohanty/build-ai-agents
 import time
 
 import anthropic

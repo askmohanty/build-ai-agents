@@ -26,8 +26,8 @@ Add this to Claude Desktop's config (Settings → Developer → Edit Config), wi
 {
   "mcpServers": {
     "devops-tools": {
-      "command": "C:/path/to/hands-on-ai-agents/.venv/Scripts/python.exe",
-      "args": ["C:/path/to/hands-on-ai-agents/10-mcp-server/server.py"]
+      "command": "C:/path/to/build-ai-agents/.venv/Scripts/python.exe",
+      "args": ["C:/path/to/build-ai-agents/10-mcp-server/server.py"]
     }
   }
 }
