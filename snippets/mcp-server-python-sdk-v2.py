@@ -2,7 +2,7 @@
 # pip install "mcp[cli]>=2"
 # Try it:   mcp dev mcp-server-python-sdk-v2.py      (opens the MCP Inspector)
 # Claude Desktop config: {"mcpServers": {"ops": {"command": "python", "args": ["/full/path/mcp-server-python-sdk-v2.py"]}}}
-# More: https://github.com/askmohanty/hands-on-ai-agents
+# More: https://github.com/askmohanty/build-ai-agents
 import shutil
 import socket
 

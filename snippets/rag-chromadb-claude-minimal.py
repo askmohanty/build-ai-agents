@@ -1,7 +1,7 @@
 # Retrieval-augmented generation (RAG) in under 60 lines: chunk, embed, search, answer with citations.
 # pip install anthropic chromadb    (set ANTHROPIC_API_KEY)
 # Chroma's built-in embedding model (~80 MB) downloads on first run, then works offline.
-# More: https://github.com/askmohanty/hands-on-ai-agents
+# More: https://github.com/askmohanty/build-ai-agents
 import anthropic
 import chromadb
 
