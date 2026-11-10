@@ -27,7 +27,7 @@ JUDGE_SCHEMA = {
     "properties": {
         "correct": {"type": "boolean", "description": "Answers the question correctly"},
         "grounded": {"type": "boolean", "description": "Every claim is supported by the sources"},
-        "score": {"type": "integer", "minimum": 1, "maximum": 5},
+        "score": {"type": "integer", "description": "1 (wrong) to 5 (fully correct and grounded)"},
         "reason": {"type": "string"},
     },
     "required": ["correct", "grounded", "score", "reason"],

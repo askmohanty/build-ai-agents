@@ -8,7 +8,7 @@ gather_logs ──► diagnose ──► severity high? ──► human_review �
 ```
 
 - `gather_logs` is plain Python with no model. Not every step needs AI.
-- `diagnose` returns a typed Pydantic object (`with_structured_output`).
+- `diagnose` returns a typed Pydantic object (`with_structured_output(..., method="json_schema")`).
 - A conditional edge sends high-severity incidents to a human before the summary is written.
 
 **You learn:** state, nodes, edges and conditional routing in LangGraph; mixing deterministic code with model calls; where a person fits in an automated flow.
@@ -26,7 +26,7 @@ python 11-langgraph-incident-assistant/graph.py --show-graph   # paste into http
 
 **Edges** define the order. `add_conditional_edges` calls `route_by_severity(state)` and follows the edge whose name it returns. That's **routing**: the model's structured output (`severity`) decides the path, but the set of possible paths is fixed by you.
 
-**Structured output with Pydantic.** `llm.with_structured_output(Diagnosis)` makes the model return a validated `Diagnosis` object rather than text, so `route_by_severity` can rely on `severity` being exactly `"low"` or `"high"`.
+**Structured output with Pydantic.** `llm.with_structured_output(Diagnosis, method="json_schema")` makes the model return a validated `Diagnosis` object rather than text, so `route_by_severity` can rely on `severity` being exactly `"low"` or `"high"`.
 
 **Workflow versus agent.** In project 09 the model chooses every step. Here the steps are fixed and the model makes decisions *within* them. Graphs give predictability, easier debugging and natural places for human approval; free agents handle open-ended problems. Real systems often mix both, for example a graph with an agent inside one node.
 

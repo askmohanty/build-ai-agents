@@ -2,6 +2,8 @@
 # Run it over a set of test questions every time you change a prompt, model or chunk size.
 # pip install anthropic    (set ANTHROPIC_API_KEY)
 # More: https://github.com/askmohanty/hands-on-ai-agents
+import json
+
 import anthropic
 
 client = anthropic.Anthropic()
@@ -11,23 +13,23 @@ GRADE = {
     "properties": {
         "correct": {"type": "boolean"},
         "grounded": {"type": "boolean", "description": "Every claim is supported by the sources"},
-        "score": {"type": "integer", "minimum": 1, "maximum": 5},
+        "score": {"type": "integer", "description": "1 (wrong) to 5 (fully correct and grounded)"},
         "reason": {"type": "string"},
     },
     "required": ["correct", "grounded", "score", "reason"],
+    "additionalProperties": False,
 }
 
 
 def judge(question: str, sources: str, answer: str) -> dict:
     response = client.messages.create(
         model="claude-sonnet-5-5",
-        max_tokens=1024,
+        max_tokens=4096,
         system="You are a strict grader. If the sources do not contain the answer, the correct answer says so.",
-        tools=[{"name": "grade", "description": "Grade the answer", "input_schema": GRADE}],
-        tool_choice={"type": "tool", "name": "grade"},
+        output_config={"format": {"type": "json_schema", "schema": GRADE}},  # the grade must match GRADE
         messages=[{"role": "user", "content": f"Question: {question}\n\nSources:\n{sources}\n\nAnswer:\n{answer}"}],
     )
-    return next(block.input for block in response.content if block.type == "tool_use")
+    return json.loads(next(block.text for block in response.content if block.type == "text"))
 
 
 CASES = [

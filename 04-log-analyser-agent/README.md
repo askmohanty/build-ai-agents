@@ -21,7 +21,7 @@ python 04-log-analyser-agent/agent.py /path/to/your/app.log
 
 **Prompt chaining.** The work is two steps: first a free-form investigation (`run_agent`), then a separate call that turns the findings into JSON (`extract`). Splitting reasoning from formatting gives better results than asking for both at once.
 
-**Structured output.** `extract` defines a tool whose input schema *is* the report format and forces the model to call it (`tool_choice`). The model's answer must match the schema, including `enum` values for severity, so code can consume it safely.
+**Structured output.** `extract` passes the report format as a JSON schema (`output_config.format`), and the API constrains the reply to it. The model's answer must match the schema, including `enum` values for severity, so code can consume it safely.
 
 Read more: [How LLMs work: the context window](../concepts/01-how-llms-work.md#the-context-window) · [Prompting and structured output](../concepts/02-prompting-and-structured-output.md)
 

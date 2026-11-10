@@ -23,7 +23,7 @@ class State(TypedDict, total=False):
 
 
 def classify(state: State) -> State:
-    return {"ticket": llm.with_structured_output(Ticket).invoke(f"Classify this support message: {state['message']}")}
+    return {"ticket": llm.with_structured_output(Ticket, method="json_schema").invoke(f"Classify this support message: {state['message']}")}
 
 
 def billing(state: State) -> State:

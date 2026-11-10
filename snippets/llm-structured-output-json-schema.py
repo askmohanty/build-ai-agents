@@ -1,4 +1,4 @@
-# Reliable JSON from a model: force it to call one tool whose schema is your output format.
+# Reliable JSON from a model: native structured output constrains the reply to your JSON schema.
 # pip install anthropic    (set ANTHROPIC_API_KEY)
 # More: https://github.com/askmohanty/hands-on-ai-agents
 import json
@@ -16,6 +16,7 @@ REPORT = {
         "actions": {"type": "array", "items": {"type": "string"}},
     },
     "required": ["severity", "root_cause", "affected_services", "actions"],
+    "additionalProperties": False,  # structured output needs closed objects
 }
 
 LOG = """10:03:53 WARN [payment-service] Connection pool usage 10/10
@@ -25,10 +26,9 @@ LOG = """10:03:53 WARN [payment-service] Connection pool usage 10/10
 
 response = client.messages.create(
     model="claude-sonnet-5-5",
-    max_tokens=1024,
-    tools=[{"name": "incident_report", "description": "File an incident report", "input_schema": REPORT}],
-    tool_choice={"type": "tool", "name": "incident_report"},  # must answer through this tool
+    max_tokens=4096,
+    output_config={"format": {"type": "json_schema", "schema": REPORT}},  # reply must match REPORT
     messages=[{"role": "user", "content": f"Write an incident report for this log:\n{LOG}"}],
 )
-report = next(block.input for block in response.content if block.type == "tool_use")
+report = json.loads(next(block.text for block in response.content if block.type == "text"))
 print(json.dumps(report, indent=2))
