@@ -1,7 +1,7 @@
 # LangGraph: nodes, typed state, structured output and a conditional edge.
 #   START -> classify -> (billing | technical) -> END
 # pip install langgraph langchain-anthropic    (set ANTHROPIC_API_KEY)
-# More: https://github.com/askmohanty/ai-engineer-starter-projects
+# More: https://github.com/askmohanty/hands-on-ai-agents
 from typing import Literal, TypedDict
 
 from langchain_anthropic import ChatAnthropic

@@ -5,7 +5,7 @@
 # add  my_agent/__init__.py  containing  "from . import agent",
 # and  my_agent/.env  containing  GOOGLE_GENAI_USE_VERTEXAI=FALSE  and  GOOGLE_API_KEY=...
 # Then, from the folder above my_agent:   adk web    (UI at http://localhost:8000)   or   adk run my_agent
-# More: https://github.com/askmohanty/ai-engineer-starter-projects
+# More: https://github.com/askmohanty/hands-on-ai-agents
 from google.adk.agents import Agent
 
 MODEL = "gemini-2.5-flash"
