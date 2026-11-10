@@ -54,7 +54,7 @@ def gather_logs(state: IncidentState) -> IncidentState:
 
 
 def diagnose(state: IncidentState) -> IncidentState:
-    diagnosis = llm.with_structured_output(Diagnosis).invoke(
+    diagnosis = llm.with_structured_output(Diagnosis, method="json_schema").invoke(
         f"Alert: {state['alert']}\n\nLog evidence:\n{state['evidence']}\n\n"
         "Find the root cause (what happened BEFORE the first error), not just the symptom."
     )

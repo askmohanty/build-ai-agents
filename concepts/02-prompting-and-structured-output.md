@@ -37,19 +37,21 @@ Three approaches, from weakest to strongest:
 | Approach | How | Reliability |
 |---|---|---|
 | Ask nicely | "Reply in JSON with fields …" | Often works; sometimes adds prose or breaks the format |
-| Forced tool call | Define a tool whose input schema *is* your output format, and force the model to call it | Very reliable; used in this repo (`agentkit.extract`) |
-| Native structured output | Provider or framework feature, e.g. LangChain's `with_structured_output(MyPydanticModel)` | Very reliable; used in [project 11](../11-langgraph-incident-assistant/) |
+| Forced tool call | Define a tool whose input schema *is* your output format, and force the model to call it | Worked well on older models; the newest Claude models reject a forced tool choice (HTTP 400), so don't build on it |
+| Native structured output | The API constrains the reply to your JSON schema (`output_config.format`), or a framework wrapper such as LangChain's `with_structured_output(MyPydanticModel, method="json_schema")` | Guaranteed to match the schema; used in this repo (`agentkit.extract`) and in [project 11](../11-langgraph-incident-assistant/) |
 
 ```python
-# The forced-tool trick (see src/agentkit/agent.py, extract())
-client.messages.create(
+# Native structured output (see src/agentkit/agent.py, extract())
+response = client.messages.create(
     model=MODEL,
-    max_tokens=1024,
-    tools=[{"name": "incident_report", "description": "File the report", "input_schema": SCHEMA}],
-    tool_choice={"type": "tool", "name": "incident_report"},   # must answer through this tool
+    max_tokens=4096,
+    output_config={"format": {"type": "json_schema", "schema": SCHEMA}},   # reply must match SCHEMA
     messages=[{"role": "user", "content": task}],
 )
+report = json.loads(response.content[-1].text)
 ```
+
+Every object in the schema needs `"additionalProperties": false`. The SDK can also take a Pydantic model and hand you a validated object: `client.messages.parse(..., output_format=MyModel).parsed_output`.
 
 Use `enum` for fixed choices (`"severity": {"enum": ["low", "high"]}`) and mark fields `required`. Validate the result in code anyway.
 
